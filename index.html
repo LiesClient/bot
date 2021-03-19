@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <style>
+      
+    </style>
+    <script difer>
+    </script>
+  </head>
+  
+  <body>
+    <h1>Unblocker</h1>
+    <p>(If says video is blocked by VEVO, just visit the VEVO site and watch it there at <a href=http://www.vevo.com> Vevo</a>.)
+    <strike><p>Type in your ID or paste one of these examples:<br /> x35P2wTX0zg<br />fuDIevJyqbI</p></strike>
+    <input onkeypress="return searchKeyPress(event);" name="getId" type="text" id="getId" />
+    <button id="btnUnblock" onclick="createLink()">Unblock</button>
+    <p>Select player size:</p>
+    <p><button onclick="buttonOne()">720x480</button></p>    
+    <p><button onclick="buttonTwo()">1280x720</button></p>
+    <p><button onclick="buttonThree()">1920x1080</button></p>
+    <p>
+    <iframe id="player" height=480 width=720 src="" allowfullscreen></iframe>
+    </p>
+    <a id="directLink" href="">Direct link</a>
+    
+    <script>
+      function searchKeyPress(e)
+{
+    e = e || window.event;
+    if (e.keyCode == 13)
+    {
+        document.getElementById('btnUnblock').click();
+        return false;
+    }
+    return true;
+}
+function createLink() {
+var theId = document.getElementById('getId').value;
+var YouTube = "youtube";
+var YouTube2 = "https://youtu.be/";
+var YouTube3 = "http://youtu.be/";
+var YouTube4 = "youtu.be/";
+if (theId.indexOf(YouTube) >= 0) {
+var string = theId.split('=');
+theId = string[1];
+}
+if (theId.indexOf(YouTube2) >= 0) {
+var sString = theId.split('/');
+theId = sString[3];
+}
+if (theId.indexOf(YouTube3) >= 0) {
+var ssString = theId.split('/');
+theId = ssString[3];
+}
+if (theId.indexOf(YouTube4) >= 0) {
+var sssString = theId.split('/');
+theId = sssString[3];
+}
+theId = theId.replace("&feature", '');
+var newId = theId.match(/.{1,11}/g);
+var customLink = 'http://www.youtube-nocookie.com/embed/' + newId[0] + '';
+document.getElementById("player").src = "" + customLink;
+document.getElementById("directLink").href = "" + customLink;
+}
+function buttonOne() {
+document.getElementById("player").height = "480";
+document.getElementById("player").width = "720";
+}
+function buttonTwo() {
+document.getElementById("player").height = "720";
+document.getElementById("player").width = "1280";
+}
+function buttonThree() {
+document.getElementById("player").height = "1080";
+document.getElementById("player").width = "1920";
+}
+    </script>
+  </body>
+</html>
